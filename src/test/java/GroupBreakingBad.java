@@ -41,7 +41,6 @@ public class GroupBreakingBad extends BaseTest {
                 .sendKeys(Keys.ENTER).build().perform();
 
         assertEquals(getDriver().getTitle(), "Wikipedia, the free encyclopedia");
-
     }
 
 }
