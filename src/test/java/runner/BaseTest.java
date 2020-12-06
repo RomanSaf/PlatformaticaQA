@@ -13,11 +13,11 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public abstract class BaseTest {
+public abstract class BaseTest {  //abstract - создан только для наследования
 
     public static final String HUB_URL = "http://localhost:4444/wd/hub";
 
-    private static boolean remoteWebDriver = false;
+    private static boolean remoteWebDriver = false; //в этой части тест понимает откуда ему запускаться-с remote или local. выполнится 1 раз и до теста
     static {
         try {
             HttpURLConnection con = (HttpURLConnection) new URL(HUB_URL + "/status").openConnection();
@@ -30,7 +30,7 @@ public abstract class BaseTest {
         } catch (IOException ignore) {}
 
         if (!remoteWebDriver) {
-            WebDriverManager.chromedriver().setup();
+            WebDriverManager.chromedriver().setup();   //создали Web Driver
         }
     }
 
@@ -39,7 +39,7 @@ public abstract class BaseTest {
     @BeforeMethod
     protected void setUpAll() {
 
-        if (remoteWebDriver) {
+        if (remoteWebDriver) {   //если поле remoteWebDriver-true-выполняем тело цикла(создается RemoteWebDriver), а если false - создаем WebDriver
             try {
                 this.driver = new RemoteWebDriver(new URL(HUB_URL), DesiredCapabilities.chrome());
             } catch (MalformedURLException e) {

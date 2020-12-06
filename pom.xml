@@ -32,10 +32,12 @@
         </dependency>
 
         <dependency>
-            <groupId>io.github.bonigarcia</groupId>
+            <groupId>io.github.bonigarcia</groupId>          <!--dependency которая заменяет строчку с созданием Web Driver
+                                                                 пишем в тесте WebDriverManager.chromedriver().setup(); -->
             <artifactId>webdrivermanager</artifactId>
             <version>4.2.2</version>
             <scope>test</scope>
+
         </dependency>
     </dependencies>
 </project>
