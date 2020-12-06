@@ -32,8 +32,8 @@ public class UspsSearchTest extends BaseTest {
 
         Thread.sleep(3000);
 
-        Assert.assertFalse(page.getWindowHandles().contains("Search Results Page | USPS"));
-
+//        Assert.assertFalse(searchField.getText(), "Christmas Tree");
+        page.quit();
 
     }
 
