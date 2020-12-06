@@ -15,27 +15,35 @@ import java.security.Key;
 
 public class UspsSearchTest extends BaseTest {
 
+
+
     @Test
-    public void searchTest() throws InterruptedException {
+    public void searchFieldTestPK() throws InterruptedException {
 
         WebDriver page = new ChromeDriver();
-        page.get("https://www.usps.com");
         Actions actions = new Actions(page);
-        WebElement search = page.findElement(By.xpath("//a[contains(text(),'Search USPS.com')]"));
-        WebElement searchField = page.findElement(By.xpath("//input[@id='global-header--search-track-search']"));
+        page.get("https://www.wikipedia.org");
+        WebElement language = page.findElement(By.xpath("//a[@id='js-link-box-en']/strong"));
+        WebElement searchField = page.findElement(By.xpath("//input[@id='searchInput']"));
+        Thread.sleep(3000);
+        WebElement result = page.findElement(By.xpath("//span[@class='mw-redirectedfrom']"));
 
-        actions.moveToElement(search)
+
+        actions.moveToElement(language)
+                .click()
                 .moveToElement(searchField)
+                .click()
                 .sendKeys("Christmas Tree")
-                .sendKeys(Keys.ENTER)
-                .perform();
+                .sendKeys(Keys.ENTER);
+
 
         Thread.sleep(3000);
-
-//        Assert.assertFalse(searchField.getText(), "Christmas Tree");
+         Assert.assertFalse(result.isDisplayed());
         page.quit();
 
     }
 
-
 }
+
+
+
