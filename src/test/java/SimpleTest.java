@@ -59,4 +59,21 @@ public class SimpleTest extends BaseTest {
         Assert.assertEquals(name.getText(), "Languages");
     }
 
+
+    @Test
+    public void newTestForPublic() {
+
+        WebDriver search = getDriver();
+        search.get("https://www.tut.by/");
+
+        WebElement textField = search.findElement(By.xpath("//input[@id = 'search_from_str']"));
+        textField.sendKeys("Выборы 2020");
+
+        WebElement buttonSubmit = search.findElement(By.xpath("//*[@class = 'button big']"));
+        buttonSubmit.click();
+
+        Assert.assertEquals(search.getCurrentUrl(), "https://search.tut.by/?status=1&ru=1&encoding=1&page=0&how=rlv&query=%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D1%8B+2020");
+
+
+    }
 }
