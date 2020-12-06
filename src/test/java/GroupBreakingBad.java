@@ -41,7 +41,6 @@ public class GroupBreakingBad extends BaseTest {
         driver.get("https://www.wikipedia.org");
         driver.findElement(By.xpath("//strong[contains(text(),'English')]")).click();
         WebElement search = driver.findElement(By.xpath("//input[@id='searchInput']"));
-
         actions.moveToElement(search).sendKeys("Selenium WebDriver")
                 .sendKeys(Keys.ENTER).build().perform();
         Thread.sleep(10000);
