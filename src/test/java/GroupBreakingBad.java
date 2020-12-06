@@ -2,11 +2,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
-
+import java.security.Key;
+import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
 
@@ -29,7 +34,7 @@ public class GroupBreakingBad extends BaseTest {
 
 
     @Test
-    public void searchFieldTestPK() {
+    public void searchFieldTestPK() throws InterruptedException {
 
         WebDriver driver = getDriver();
         Actions actions = new Actions(driver);
@@ -39,8 +44,11 @@ public class GroupBreakingBad extends BaseTest {
 
         actions.moveToElement(search).sendKeys("Selenium WebDriver")
                 .sendKeys(Keys.ENTER).build().perform();
+        Thread.sleep(10000);
 
-        assertEquals(getDriver().getTitle(), "Wikipedia, the free encyclopedia");
+       assertEquals(getDriver().getTitle(),"Wikipedia, the free encyclopedia");
+
+
     }
 
 }
